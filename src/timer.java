@@ -63,16 +63,13 @@ public class timer extends JFrame implements ActionListener{
     //button actions
     public void actionPerformed(ActionEvent event) {
         boolean start1 = true;
-        while (start1) {
-
-        }
         time = time + 1;
+        while (start1 == true) {
+            if(event.getSource() == start) {
+                start1 = true;
+            }
 
-        if(event.getSource() == start) {
-            start1 = true;
-        }
-
-            if (start1 = true) {
+            if (start1 == true) {
                 min1.setText(Integer.toString(time / 60));
                 sec1.setText(Integer.toString(time % 60));
 
@@ -82,15 +79,19 @@ public class timer extends JFrame implements ActionListener{
 
 
 
-        if(event.getSource() == stop) {
-            start1 = false;
-        }
+            if(event.getSource() == stop) {
+                start1 = false;
+            }
 
-            if (start1 = false) {
+            if (start1 == false) {
                 time = time;
                 min1.setText(Integer.toString(time / 60));
                 sec1.setText(Integer.toString(time % 60));
             }
+        }
+
+
+
 
     }
 }
