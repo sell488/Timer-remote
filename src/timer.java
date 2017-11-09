@@ -80,9 +80,6 @@ public class timer extends JFrame implements ActionListener{
 
 
 
-
-
-
         if(event.getSource() == stop) {
             start1 = false;
         }
@@ -92,8 +89,6 @@ public class timer extends JFrame implements ActionListener{
                 min1.setText(Integer.toString(time / 60));
                 sec1.setText(Integer.toString(time % 60));
             }
-
-
 
     }
 }
