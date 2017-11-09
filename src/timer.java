@@ -62,8 +62,10 @@ public class timer extends JFrame implements ActionListener{
 
     //button actions
     public void actionPerformed(ActionEvent event) {
-        boolean start1;
+        boolean start1 = true;
+        while (start1) {
 
+        }
         time = time + 1;
 
         if(event.getSource() == start) {
