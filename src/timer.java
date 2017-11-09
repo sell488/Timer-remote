@@ -82,7 +82,7 @@ public class timer extends JFrame implements ActionListener{
 
 
 
-//TEST
+
         if(event.getSource() == stop) {
             start1 = false;
         }
