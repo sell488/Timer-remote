@@ -5,7 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class timer extends JFrame implements ActionListener{
+
+public class timer extends JFrame implements ActionListener {
     // creates minutes and seconds text fields
     private JTextField sec1;
     private JTextField min1;
@@ -22,10 +23,10 @@ public class timer extends JFrame implements ActionListener{
     private JButton start;
     private JButton stop;
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         //inits new timer and GUI
         timer frame = new timer();
-        frame.setSize(300,100);
+        frame.setSize(400, 150);
         frame.createGUI();
         frame.setVisible(true);
     }
@@ -48,8 +49,18 @@ public class timer extends JFrame implements ActionListener{
         sec1 = new JTextField(2);
         window.add(sec1);
 
-        count = new Timer(1000, this);
-        count.start();
+        //ActionListener adds timer function
+        ActionListener listener = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                min1.setText(Integer.toString(time / 60));
+                sec1.setText(Integer.toString(time % 60));
+                time++;
+
+            }
+        };
+
+        count = new Timer(1000, listener);
 
         start = new JButton("Start Timer");
         window.add(start);
@@ -61,37 +72,15 @@ public class timer extends JFrame implements ActionListener{
     }
 
     //button actions
-    public void actionPerformed(ActionEvent event) {
-        boolean start1 = true;
-        time = time + 1;
-        while (start1 == true) {
-            if(event.getSource() == start) {
-                start1 = true;
-            }
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == start) {
 
-            if (start1 == true) {
-                min1.setText(Integer.toString(time / 60));
-                sec1.setText(Integer.toString(time % 60));
+            count.start();
 
-
-
-            }
-
-
-
-            if(event.getSource() == stop) {
-                start1 = false;
-            }
-
-            if (start1 == false) {
-                time = time;
-                min1.setText(Integer.toString(time / 60));
-                sec1.setText(Integer.toString(time % 60));
-            }
         }
-
-
-
+        if(e.getSource() == stop) {
+            count.stop();
+        }
 
     }
 }
